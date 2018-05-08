@@ -147,7 +147,7 @@ function controlledRequestGen() {
 
 This would work, but it would also give the user a function that they could _always_ call to allow more requests. That is probably alright, but we can do one better using our favoriate javascript programming principal, closure.
 
-```
+```javascript
 function controlledRequestGen() {
   var allowRequests = true;
   
