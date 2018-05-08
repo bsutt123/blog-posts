@@ -109,7 +109,7 @@ function controlledRequestGen() {
       var fullUrl = url + paramterize(params);
       var request = new Request(fullUrl);
       var response = await fetch(request);
-      var result = response.json();
+      var result = await response.json();
       
       return result;
     } else {
@@ -165,7 +165,7 @@ function controlledRequestGen() {
       var fullUrl = url + paramterize(params);
       var request = new Request(fullUrl);
       var response = await fetch(request);
-      var result = response.json();
+      var result =  await response.json();
       
       return {
         result,
@@ -200,15 +200,16 @@ we have taken a difficult async request, and abstracted it into just a few lines
 
 ## Whats the point!
 
-The point is that everyday, we are using abstractions when we make code. In this case, it was 2 particular abstractions in relation to making async requests, but as you move through your codebases, you may find lots of abstractions that you are using with relation to database management, state control, or really anything involved with complex code.
+The point is that everyday, we are using abstractions when we make code. In this case, it was 2 particular abstractions in relation to making async requests. But as you move through your own codebases, you may find lots of abstractions that you are using with relation to database management, state control, or really anything involved with complex code.
 
 Identifying, extracting and using these abstractions make us better coders, and makes it easier for others to come back and better read and understand the code we wrote today. And time making the codebase easier to read and understand is never time wasted.
 
-So next time you find yourself include a complex bit of imperative code in your functions, take a step back and try and identify if you are using any core concepts that could be abstracted away from the details. It might just help you write better code.
+So next time you find yourself including a complex bit of imperative code in your functions, take a step back and try and identify if you are using any core concepts that could be abstracted away from the details. It might just help down the line when you are maintaining that same bit of code.
+
 
 ## Extra functions!
 
-I used a `paramaterize` function. If you are passing in parameters as and Object with key/value pairs with strings, to encode them into query params string you can do...
+I used a `paramaterize` function. If you are passing in parameters as and Object with key/value pairs with strings, to encode them into query params string you can do use the following function...
 
 ```javascript
 function parameterize(params) {
